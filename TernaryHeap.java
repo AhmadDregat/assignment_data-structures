@@ -76,7 +76,7 @@ public class TernaryHeap {
 	
 	public boolean insert(int k) {
 		boolean flag=true;
-		return flag;
+		return flag; 
 	}
 	
 
