@@ -1,4 +1,7 @@
- public class TernaryHeap {
+/*
+*Author: ahmad dregat 
+*/
+public class TernaryHeap {
 
 	public TernaryHeap(int capacity) {}
 
