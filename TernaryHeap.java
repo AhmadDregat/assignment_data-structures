@@ -28,10 +28,7 @@ public class TernaryHeap {
 		return((3*i)-1)/3;
 	}
 	
-	/**return the max value in the heap **/
-	private int getmax() {
-		return heap[0];
-	}
+	
 	/** returns true if the heap is empty, otherwise false */
 	private boolean isEmpty() {
 		return size==0;
@@ -81,7 +78,13 @@ public class TernaryHeap {
 	
 
 	public int remove_max() {
-		int max=0;
+		int max=Integer.MIN_VALUE; // infinity
+		if (!isEmpty()){
+			max = heap[0];
+			heap[0]=heap[size-1];
+			size = size-1;
+			maxHeapify(0, size);
+		}
 		return max;}
 
 }
