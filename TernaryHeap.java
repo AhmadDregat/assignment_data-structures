@@ -26,7 +26,7 @@ int size ;
 	/** parent returns the parent of vertex  i*/
 	private int parent(int i) {
 		return((3*i)-1)/3;
-	 }
+	  }
 	
 	public boolean insert(int k) {}
 /**return the max value in the heap **/
