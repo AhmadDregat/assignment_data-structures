@@ -80,7 +80,7 @@ public class TernaryHeap {
 	public int remove_max() {
 		int max=Integer.MIN_VALUE; // infinity
 		if (!isEmpty()){
-			max = heap[0];
+			max  = heap[0];
 			heap[0]=heap[size-1];
 			size = size-1;
 			maxHeapify(0, size);
