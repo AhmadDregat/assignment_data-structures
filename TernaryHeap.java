@@ -13,7 +13,7 @@ public class TernaryHeap {
 	public TernaryHeap(int capacity) {
 
 		this.size=size;
-		heap=new int [capacity+1];
+		heap=new int [capacity];
 	}
 	/** rightChild returns the right child of vertex  i*/
 	private int right(int i) {
@@ -159,19 +159,14 @@ public class TernaryHeap {
 		TernaryHeap h = new TernaryHeap(arr.length);
 		h.buildMaxHeap();
 		//h.print();
-		h.insert(7);
-		h.insert(3);
-		h.insert(1);
-		h.insert(6);
 		h.insert(9);
-
 		h.insert(8);
-		h.insert(12);
-		
-		h.remove_max();
-		h.insert(50);
-		h.print();
-		h.remove_max();
+		h.insert(6);
+		h.insert(7);
+		h.insert(5);
+		h.insert(83);
+		h.insert(127);
+		h.insert(4);
 		h.print();
 	///	System.out.println(Arrays.toString(arr));
 	}
