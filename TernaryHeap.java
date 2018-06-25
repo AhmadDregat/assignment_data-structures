@@ -83,7 +83,7 @@ public class TernaryHeap {
 		Heapifydown(larg, size);
 		}
 
-	}
+	 }
 	/**
 	 *  remove_max removes and returns the largest element of heap
 	 * complexity O(log(n))
