@@ -9,31 +9,39 @@ public class TernaryHeap {
 
 	int heap [];
 	int size ;
+	private int d;
 	/** Constructor */
 	public TernaryHeap(int capacity) {
-
+		this.d = 3;
 		this.size=size;
-		heap=new int [capacity];
+	heap=new int [capacity];
 	}
-	/** rightChild returns the right child of vertex  i*/
+	/** rightChild returns the right child of vertex  i
+	 
+	 */
 	private int right(int i) {
-		return 3*i+3;
+		return d*i+3;
 	}
-	/** leftChild returns the left child of vertex  i*/
+	/** leftChild returns the left child of vertex  i
+	 *  complexity is O(1)
+	 *  */
 	public static int left(int i) {
-		return 3*i+1;
+		return d*i+1;
 	}
-	/** midChild returns the mid child of vertex  i*/
+	/** midChild returns the mid child of vertex  i
+	 * complexity is O(1) */
 	private int mid(int i) {
-		return 3*i+2;
+		return d*i+2;
 	}
-	/** parent returns the parent of vertex  i*/
+	/** parent returns the parent of vertex  i
+	 * complexity is O(1)*/
 	private int parent(int i) {
-		return((3*i)-1)/3;
+		return((d*i)-1)/3;
 	}
 
 
-	/** returns true if the heap is empty, otherwise false */
+	/** returns true if the heap is empty, otherwise false
+	 * complexity is O(1) */
 	private boolean isEmpty() {
 		return size==0;
 	}
@@ -47,7 +55,7 @@ public class TernaryHeap {
 	 * The function of maxHeapfy is to let the value of heap[i] "float-down"
 	 * in the Max-Heap so that subtree rooted at index i becomes a Max-Heap
 	 */
-	public void maxHeapify(int i,int size ) {
+	public void Heapifydown(int i,int size ) {
 		int larg ;
 		int left =left(i);
 		int right =right(i);
@@ -62,9 +70,12 @@ public class TernaryHeap {
 		}
 		if (larg!=i){
 			swap(i, larg);
-			maxHeapify(larg, size);
+			Heapifydown(larg, size);
 		}		
 	}
+	/**
+	 * * complexity is O(log(n))
+	 */
 	public void heapUp (int startNode) { 
 		int currNode = startNode; 
 		while (currNode != 0) { 
@@ -82,6 +93,8 @@ public class TernaryHeap {
 
 	/** 
 	 * Inserts an element into the heap. 
+	 * Complexity is O(h) where h is the height of the heap. 
+	 * O(h)=O(log(n))
 	 */ 
 	public boolean insert(int k) {
 		if(isfull()) return false;
@@ -91,7 +104,10 @@ public class TernaryHeap {
 		return true;
 	}
 
-
+/**
+ * swaping two elements 
+ * complexity O(1)
+ */
 	private void swap(int i, int larg) {
 		// TODO Auto-generated method stub
 		int temp =heap[i];
@@ -99,12 +115,19 @@ public class TernaryHeap {
 		heap[larg]=temp ;
 
 	}
+	/**
+	 * isfuul return if the heap is full or not 
+	 * complexity O(1)
+	 */
 	private boolean isfull() {
 		return size==heap.length;
 	}
 	
 	
-
+	/**
+	 *  remove_max removes and returns the largest element of heap
+	 * complexity O(log(n))
+	*/
 	public int remove_max() {
 		int max=Integer.MIN_VALUE; // infinity
 		if (!isEmpty()){
