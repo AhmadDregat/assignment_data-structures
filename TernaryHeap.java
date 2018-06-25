@@ -1,5 +1,5 @@
 import java.util.Arrays;
-import java.util.Locale.LanguageRange;
+
 import java.util.Scanner;
 
 /*
@@ -65,15 +65,32 @@ public class TernaryHeap {
 			maxHeapify(larg, size);
 		}		
 	}
-	/** 
-	 * buildMaxHeap produces a Max-Heap from an unordered input array.
-	 * buildMaxHeap runs in linear time O(n)
-	 */
-	public void buildMaxHeap(){
-		for (int i=size/2; i>=0; i--){
-			maxHeapify(i, size);
-		}
+	public void heapUp (int startNode) { 
+		int currNode = startNode; 
+		while (currNode != 0) { 
+			if (heap[currNode] > heap[parent(currNode)]) { 
+				int temp = heap[currNode]; 
+				heap[currNode] = heap[parent(currNode)]; 
+				heap[parent(currNode)] = temp;
+
+				currNode = parent(currNode); 
+			} else { 
+				break; 
+			} 
+		} 
 	}
+
+	/** 
+	 * Inserts an element into the heap. 
+	 */ 
+	public boolean insert(int k) {
+		if(isfull()) return false;
+		heap[size] = k; 
+		size++; 
+		heapUp (size - 1); 
+		return true;
+	}
+
 
 	private void swap(int i, int larg) {
 		// TODO Auto-generated method stub
@@ -85,55 +102,9 @@ public class TernaryHeap {
 	private boolean isfull() {
 		return size==heap.length;
 	}
-	/**
-	 * heapIncreaseKey(i, key) increases the value of element i-s key 
-	 * to the new value key, which is assumed to be at least as large
-	 * as i's current key value
-	 */
-	private void heapIncreaseKey(int i, int key){
-		if (key >=heap[i]){
-			heap[i] = key;
-			while (i>0 && heap[parent(i)]<heap[i]){
-				swap(i, parent(i));
-				i = parent(i);
-			}
-		}
-	}
-	/**
-	 * heapInsert(k) inserts the element key into a heap
-	 */
-	public boolean insert(int k){
-		boolean flag =true ;
-	//	if (isfull()) {
-			//System.out.println("Heap is full!");
-		//	return flag=false;
-		//}else {
-			int temp[] = new int[size+1];
-			for (int i=0; i<size; i++){
-				temp[i]=heap[i];
-			} 
-			heap = temp;
-			size = size+1;
-		heap[size-1] = Integer.MIN_VALUE;
-		heapIncreaseKey(size-1, k);
-		return flag ;
-		//}
-	}
 	
-	/*	public boolean insert(int k) {
-		boolean flag=true;
-	 	if (isfull()) {
-			System.out.println("Heap is full!");
-			return flag=false;
-		}
+	
 
-		heap[size++] = k;
-		maxHeapify(heap[size],size);
-
-		return flag;
-	}
-
-	 */
 	public int remove_max() {
 		int max=Integer.MIN_VALUE; // infinity
 		if (!isEmpty()){
